@@ -24,61 +24,60 @@ import utils.FileUtils;
 //vv AvroSort
 public class AvroSort extends Configured implements Tool {
 
-  static class SortMapper<K> extends AvroMapper<K, Pair<K, K>> {
-    public void map(K datum, AvroCollector<Pair<K, K>> collector,
-        Reporter reporter) throws IOException {
-      collector.collect(new Pair<K, K>(datum, null, datum, null));
-    }
-  }
+	@Override
+	public int run(String[] args) throws Exception {
+		if (args.length != 3) {
+			System.err
+					.printf("Usage: %s [generic options] <input> <output> <schema-file>\n",
+							getClass().getSimpleName());
+			ToolRunner.printGenericCommandUsage(System.err);
+			return -1;
+		}
 
-  static class SortReducer<K> extends AvroReducer<K, K, K> {
-    public void reduce(K key, Iterable<K> values,
-        AvroCollector<K> collector,
-        Reporter reporter) throws IOException {
-      for (K value : values) {
-        collector.collect(value);
-      }
-    }
-  }
+		String input = args[0];
+		String output = args[1];
+		String schemaFile = args[2];
 
-  @Override
-  public int run(String[] args) throws Exception {
-    
-    if (args.length != 3) {
-      System.err.printf(
-        "Usage: %s [generic options] <input> <output> <schema-file>\n",
-        getClass().getSimpleName());
-      ToolRunner.printGenericCommandUsage(System.err);
-      return -1;
-    }
-    
-    String input = args[0];
-    String output = args[1];
-    String schemaFile = args[2];
+		JobConf conf = new JobConf(getConf(), getClass());
+		conf.setJobName("Avro sort");
 
-    JobConf conf = new JobConf(getConf(), getClass());
-    conf.setJobName("Avro sort");
-    
-    FileInputFormat.addInputPath(conf, new Path(input));
-    FileOutputFormat.setOutputPath(conf, new Path(output));
-    
-    Schema schema = new Schema.Parser().parse(new File(schemaFile));
-    AvroJob.setInputSchema(conf, schema);
-    Schema intermediateSchema = Pair.getPairSchema(schema, schema);
-    AvroJob.setMapOutputSchema(conf, intermediateSchema);
-    AvroJob.setOutputSchema(conf, schema);
-    
-    AvroJob.setMapperClass(conf, SortMapper.class);
-    AvroJob.setReducerClass(conf, SortReducer.class);
-  
-    JobClient.runJob(conf); 
-    return 0;
-  }
-  
-  public static void main(String[] args) throws Exception {
-	FileUtils.delAllFile(args[1]);
-    int exitCode = ToolRunner.run(new AvroSort(), args);
-    System.exit(exitCode);
-  }
+		FileInputFormat.addInputPath(conf, new Path(input));
+		FileOutputFormat.setOutputPath(conf, new Path(output));
+
+		Schema schema = new Schema.Parser().parse(new File(schemaFile));
+		AvroJob.setInputSchema(conf, schema);
+		Schema intermediateSchema = Pair.getPairSchema(schema, schema);
+		AvroJob.setMapOutputSchema(conf, intermediateSchema);
+		AvroJob.setOutputSchema(conf, schema);
+
+		AvroJob.setMapperClass(conf, SortMapper.class);
+		AvroJob.setReducerClass(conf, SortReducer.class);
+
+		JobClient.runJob(conf);
+		return 0;
+	}
+
+	static class SortMapper<K> extends AvroMapper<K, Pair<K, K>> {
+		public void map(K datum, AvroCollector<Pair<K, K>> collector,
+				Reporter reporter) throws IOException {
+			collector.collect(new Pair<K, K>(datum, null, datum, null));
+		}
+	}
+
+	static class SortReducer<K> extends AvroReducer<K, K, K> {
+		public void reduce(K key, Iterable<K> values,
+				AvroCollector<K> collector, Reporter reporter)
+				throws IOException {
+			for (K value : values) {
+				collector.collect(value);
+			}
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		FileUtils.delAllFile(args[1]);
+		int exitCode = ToolRunner.run(new AvroSort(), args);
+		System.exit(exitCode);
+	}
 }
 // ^^ AvroSort

@@ -1,4 +1,4 @@
-package ch04;
+package avro;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

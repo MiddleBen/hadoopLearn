@@ -1,4 +1,4 @@
-package ch04;
+package avro;
 
 import java.io.IOException;
 
@@ -22,6 +22,8 @@ import org.apache.hadoop.mapred.Reporter;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import org.mortbay.util.ajax.JSON;
+
+import utils.NcdcRecordParser;
 
 public class AvroGenericMapReduce extends Configured implements Tool {
 

@@ -1,0 +1,1 @@
+1.对于在window运行的hadoop实验程序，如果是2.4以后的版本，把hadoop_dll2.6.0.zip解压并把文件放到hadoop的bin目录里面才能正常运行。

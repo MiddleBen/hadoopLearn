@@ -3,7 +3,7 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package ch04.entity;  
+package avro.entity;  
 @SuppressWarnings("all")
 /** a pair of strings */
 @org.apache.avro.specific.AvroGenerated
@@ -76,18 +76,18 @@ public class StringPairAliase extends org.apache.avro.specific.SpecificRecordBas
   }
 
   /** Creates a new StringPairAliase RecordBuilder */
-  public static ch04.entity.StringPairAliase.Builder newBuilder() {
-    return new ch04.entity.StringPairAliase.Builder();
+  public static avro.entity.StringPairAliase.Builder newBuilder() {
+    return new avro.entity.StringPairAliase.Builder();
   }
   
   /** Creates a new StringPairAliase RecordBuilder by copying an existing Builder */
-  public static ch04.entity.StringPairAliase.Builder newBuilder(ch04.entity.StringPairAliase.Builder other) {
-    return new ch04.entity.StringPairAliase.Builder(other);
+  public static avro.entity.StringPairAliase.Builder newBuilder(avro.entity.StringPairAliase.Builder other) {
+    return new avro.entity.StringPairAliase.Builder(other);
   }
   
   /** Creates a new StringPairAliase RecordBuilder by copying an existing StringPairAliase instance */
-  public static ch04.entity.StringPairAliase.Builder newBuilder(ch04.entity.StringPairAliase other) {
-    return new ch04.entity.StringPairAliase.Builder(other);
+  public static avro.entity.StringPairAliase.Builder newBuilder(avro.entity.StringPairAliase other) {
+    return new avro.entity.StringPairAliase.Builder(other);
   }
   
   /**
@@ -101,17 +101,17 @@ public class StringPairAliase extends org.apache.avro.specific.SpecificRecordBas
 
     /** Creates a new Builder */
     private Builder() {
-      super(ch04.entity.StringPairAliase.SCHEMA$);
+      super(avro.entity.StringPairAliase.SCHEMA$);
     }
     
     /** Creates a Builder by copying an existing Builder */
-    private Builder(ch04.entity.StringPairAliase.Builder other) {
+    private Builder(avro.entity.StringPairAliase.Builder other) {
       super(other);
     }
     
     /** Creates a Builder by copying an existing StringPairAliase instance */
-    private Builder(ch04.entity.StringPairAliase other) {
-            super(ch04.entity.StringPairAliase.SCHEMA$);
+    private Builder(avro.entity.StringPairAliase other) {
+            super(avro.entity.StringPairAliase.SCHEMA$);
       if (isValidValue(fields()[0], other.first)) {
         this.first = data().deepCopy(fields()[0].schema(), other.first);
         fieldSetFlags()[0] = true;
@@ -128,7 +128,7 @@ public class StringPairAliase extends org.apache.avro.specific.SpecificRecordBas
     }
     
     /** Sets the value of the 'first' field */
-    public ch04.entity.StringPairAliase.Builder setFirst(java.lang.CharSequence value) {
+    public avro.entity.StringPairAliase.Builder setFirst(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.first = value;
       fieldSetFlags()[0] = true;
@@ -141,7 +141,7 @@ public class StringPairAliase extends org.apache.avro.specific.SpecificRecordBas
     }
     
     /** Clears the value of the 'first' field */
-    public ch04.entity.StringPairAliase.Builder clearFirst() {
+    public avro.entity.StringPairAliase.Builder clearFirst() {
       first = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -153,7 +153,7 @@ public class StringPairAliase extends org.apache.avro.specific.SpecificRecordBas
     }
     
     /** Sets the value of the 'second' field */
-    public ch04.entity.StringPairAliase.Builder setSecond(java.lang.CharSequence value) {
+    public avro.entity.StringPairAliase.Builder setSecond(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.second = value;
       fieldSetFlags()[1] = true;
@@ -166,7 +166,7 @@ public class StringPairAliase extends org.apache.avro.specific.SpecificRecordBas
     }
     
     /** Clears the value of the 'second' field */
-    public ch04.entity.StringPairAliase.Builder clearSecond() {
+    public avro.entity.StringPairAliase.Builder clearSecond() {
       second = null;
       fieldSetFlags()[1] = false;
       return this;

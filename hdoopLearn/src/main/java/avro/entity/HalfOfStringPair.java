@@ -3,7 +3,7 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package ch04.entity;  
+package avro.entity;  
 @SuppressWarnings("all")
 /** a pair of strings */
 @org.apache.avro.specific.AvroGenerated
@@ -57,18 +57,18 @@ public class HalfOfStringPair extends org.apache.avro.specific.SpecificRecordBas
   }
 
   /** Creates a new HalfOfStringPair RecordBuilder */
-  public static ch04.entity.HalfOfStringPair.Builder newBuilder() {
-    return new ch04.entity.HalfOfStringPair.Builder();
+  public static avro.entity.HalfOfStringPair.Builder newBuilder() {
+    return new avro.entity.HalfOfStringPair.Builder();
   }
   
   /** Creates a new HalfOfStringPair RecordBuilder by copying an existing Builder */
-  public static ch04.entity.HalfOfStringPair.Builder newBuilder(ch04.entity.HalfOfStringPair.Builder other) {
-    return new ch04.entity.HalfOfStringPair.Builder(other);
+  public static avro.entity.HalfOfStringPair.Builder newBuilder(avro.entity.HalfOfStringPair.Builder other) {
+    return new avro.entity.HalfOfStringPair.Builder(other);
   }
   
   /** Creates a new HalfOfStringPair RecordBuilder by copying an existing HalfOfStringPair instance */
-  public static ch04.entity.HalfOfStringPair.Builder newBuilder(ch04.entity.HalfOfStringPair other) {
-    return new ch04.entity.HalfOfStringPair.Builder(other);
+  public static avro.entity.HalfOfStringPair.Builder newBuilder(avro.entity.HalfOfStringPair other) {
+    return new avro.entity.HalfOfStringPair.Builder(other);
   }
   
   /**
@@ -81,17 +81,17 @@ public class HalfOfStringPair extends org.apache.avro.specific.SpecificRecordBas
 
     /** Creates a new Builder */
     private Builder() {
-      super(ch04.entity.HalfOfStringPair.SCHEMA$);
+      super(avro.entity.HalfOfStringPair.SCHEMA$);
     }
     
     /** Creates a Builder by copying an existing Builder */
-    private Builder(ch04.entity.HalfOfStringPair.Builder other) {
+    private Builder(avro.entity.HalfOfStringPair.Builder other) {
       super(other);
     }
     
     /** Creates a Builder by copying an existing HalfOfStringPair instance */
-    private Builder(ch04.entity.HalfOfStringPair other) {
-            super(ch04.entity.HalfOfStringPair.SCHEMA$);
+    private Builder(avro.entity.HalfOfStringPair other) {
+            super(avro.entity.HalfOfStringPair.SCHEMA$);
       if (isValidValue(fields()[0], other.right)) {
         this.right = data().deepCopy(fields()[0].schema(), other.right);
         fieldSetFlags()[0] = true;
@@ -104,7 +104,7 @@ public class HalfOfStringPair extends org.apache.avro.specific.SpecificRecordBas
     }
     
     /** Sets the value of the 'right' field */
-    public ch04.entity.HalfOfStringPair.Builder setRight(java.lang.CharSequence value) {
+    public avro.entity.HalfOfStringPair.Builder setRight(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.right = value;
       fieldSetFlags()[0] = true;
@@ -117,7 +117,7 @@ public class HalfOfStringPair extends org.apache.avro.specific.SpecificRecordBas
     }
     
     /** Clears the value of the 'right' field */
-    public ch04.entity.HalfOfStringPair.Builder clearRight() {
+    public avro.entity.HalfOfStringPair.Builder clearRight() {
       right = null;
       fieldSetFlags()[0] = false;
       return this;

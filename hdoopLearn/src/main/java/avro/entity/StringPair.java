@@ -3,7 +3,7 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package ch04.entity;  
+package avro.entity;  
 @SuppressWarnings("all")
 /** a pair of strings */
 @org.apache.avro.specific.AvroGenerated
@@ -57,18 +57,18 @@ public class StringPair extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   /** Creates a new StringPair RecordBuilder */
-  public static ch04.entity.StringPair.Builder newBuilder() {
-    return new ch04.entity.StringPair.Builder();
+  public static avro.entity.StringPair.Builder newBuilder() {
+    return new avro.entity.StringPair.Builder();
   }
   
   /** Creates a new StringPair RecordBuilder by copying an existing Builder */
-  public static ch04.entity.StringPair.Builder newBuilder(ch04.entity.StringPair.Builder other) {
-    return new ch04.entity.StringPair.Builder(other);
+  public static avro.entity.StringPair.Builder newBuilder(avro.entity.StringPair.Builder other) {
+    return new avro.entity.StringPair.Builder(other);
   }
   
   /** Creates a new StringPair RecordBuilder by copying an existing StringPair instance */
-  public static ch04.entity.StringPair.Builder newBuilder(ch04.entity.StringPair other) {
-    return new ch04.entity.StringPair.Builder(other);
+  public static avro.entity.StringPair.Builder newBuilder(avro.entity.StringPair other) {
+    return new avro.entity.StringPair.Builder(other);
   }
   
   /**
@@ -81,17 +81,17 @@ public class StringPair extends org.apache.avro.specific.SpecificRecordBase impl
 
     /** Creates a new Builder */
     private Builder() {
-      super(ch04.entity.StringPair.SCHEMA$);
+      super(avro.entity.StringPair.SCHEMA$);
     }
     
     /** Creates a Builder by copying an existing Builder */
-    private Builder(ch04.entity.StringPair.Builder other) {
+    private Builder(avro.entity.StringPair.Builder other) {
       super(other);
     }
     
     /** Creates a Builder by copying an existing StringPair instance */
-    private Builder(ch04.entity.StringPair other) {
-            super(ch04.entity.StringPair.SCHEMA$);
+    private Builder(avro.entity.StringPair other) {
+            super(avro.entity.StringPair.SCHEMA$);
       if (isValidValue(fields()[0], other.right)) {
         this.right = data().deepCopy(fields()[0].schema(), other.right);
         fieldSetFlags()[0] = true;
@@ -104,7 +104,7 @@ public class StringPair extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Sets the value of the 'right' field */
-    public ch04.entity.StringPair.Builder setRight(java.lang.CharSequence value) {
+    public avro.entity.StringPair.Builder setRight(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.right = value;
       fieldSetFlags()[0] = true;
@@ -117,7 +117,7 @@ public class StringPair extends org.apache.avro.specific.SpecificRecordBase impl
     }
     
     /** Clears the value of the 'right' field */
-    public ch04.entity.StringPair.Builder clearRight() {
+    public avro.entity.StringPair.Builder clearRight() {
       right = null;
       fieldSetFlags()[0] = false;
       return this;

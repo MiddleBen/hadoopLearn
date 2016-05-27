@@ -1,4 +1,4 @@
-package ch04;
+package avro;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,8 +21,8 @@ import org.apache.hadoop.mapred.Reporter;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+import avro.entity.WeatherRecord;
 import utils.FileUtils;
-import ch04.entity.WeatherRecord;
 
 /**
  * mapper 和reducer为啥一定要是static类才能执行，否则例如为public类就报错。
@@ -52,11 +52,11 @@ public class AvroDataSortMapReduce extends Configured implements Tool {
 		conf.setJobName("avro map reduce sort");
 		FileInputFormat.addInputPath(conf, new Path(input));
 		FileOutputFormat.setOutputPath(conf, new Path(output));
-		
+
 		Schema schema = new Schema.Parser().parse(new File(schemaFile));
 		AvroJob.setInputSchema(conf, schema);
 		Schema pairSchema = Pair.getPairSchema(schema, schema);
-		
+
 		AvroJob.setMapOutputSchema(conf, pairSchema);
 		AvroJob.setOutputSchema(conf, schema);
 
@@ -67,7 +67,7 @@ public class AvroDataSortMapReduce extends Configured implements Tool {
 		return 0;
 	}
 
-	public class SortMapper extends
+	static class SortMapper extends
 			AvroMapper<WeatherRecord, Pair<WeatherRecord, WeatherRecord>> {
 
 		@Override
@@ -79,7 +79,7 @@ public class AvroDataSortMapReduce extends Configured implements Tool {
 
 	}
 
-	public class SortReducer extends
+	static class SortReducer extends
 			AvroReducer<WeatherRecord, WeatherRecord, WeatherRecord> {
 
 		@Override

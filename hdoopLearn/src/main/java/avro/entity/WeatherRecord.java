@@ -3,7 +3,7 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package ch04.entity;  
+package avro.entity;  
 @SuppressWarnings("all")
 /** A weather reading. */
 @org.apache.avro.specific.AvroGenerated
@@ -95,18 +95,18 @@ public class WeatherRecord extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /** Creates a new WeatherRecord RecordBuilder */
-  public static ch04.entity.WeatherRecord.Builder newBuilder() {
-    return new ch04.entity.WeatherRecord.Builder();
+  public static avro.entity.WeatherRecord.Builder newBuilder() {
+    return new avro.entity.WeatherRecord.Builder();
   }
   
   /** Creates a new WeatherRecord RecordBuilder by copying an existing Builder */
-  public static ch04.entity.WeatherRecord.Builder newBuilder(ch04.entity.WeatherRecord.Builder other) {
-    return new ch04.entity.WeatherRecord.Builder(other);
+  public static avro.entity.WeatherRecord.Builder newBuilder(avro.entity.WeatherRecord.Builder other) {
+    return new avro.entity.WeatherRecord.Builder(other);
   }
   
   /** Creates a new WeatherRecord RecordBuilder by copying an existing WeatherRecord instance */
-  public static ch04.entity.WeatherRecord.Builder newBuilder(ch04.entity.WeatherRecord other) {
-    return new ch04.entity.WeatherRecord.Builder(other);
+  public static avro.entity.WeatherRecord.Builder newBuilder(avro.entity.WeatherRecord other) {
+    return new avro.entity.WeatherRecord.Builder(other);
   }
   
   /**
@@ -121,17 +121,17 @@ public class WeatherRecord extends org.apache.avro.specific.SpecificRecordBase i
 
     /** Creates a new Builder */
     private Builder() {
-      super(ch04.entity.WeatherRecord.SCHEMA$);
+      super(avro.entity.WeatherRecord.SCHEMA$);
     }
     
     /** Creates a Builder by copying an existing Builder */
-    private Builder(ch04.entity.WeatherRecord.Builder other) {
+    private Builder(avro.entity.WeatherRecord.Builder other) {
       super(other);
     }
     
     /** Creates a Builder by copying an existing WeatherRecord instance */
-    private Builder(ch04.entity.WeatherRecord other) {
-            super(ch04.entity.WeatherRecord.SCHEMA$);
+    private Builder(avro.entity.WeatherRecord other) {
+            super(avro.entity.WeatherRecord.SCHEMA$);
       if (isValidValue(fields()[0], other.year)) {
         this.year = data().deepCopy(fields()[0].schema(), other.year);
         fieldSetFlags()[0] = true;
@@ -152,7 +152,7 @@ public class WeatherRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'year' field */
-    public ch04.entity.WeatherRecord.Builder setYear(int value) {
+    public avro.entity.WeatherRecord.Builder setYear(int value) {
       validate(fields()[0], value);
       this.year = value;
       fieldSetFlags()[0] = true;
@@ -165,7 +165,7 @@ public class WeatherRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'year' field */
-    public ch04.entity.WeatherRecord.Builder clearYear() {
+    public avro.entity.WeatherRecord.Builder clearYear() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -176,7 +176,7 @@ public class WeatherRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'temperature' field */
-    public ch04.entity.WeatherRecord.Builder setTemperature(int value) {
+    public avro.entity.WeatherRecord.Builder setTemperature(int value) {
       validate(fields()[1], value);
       this.temperature = value;
       fieldSetFlags()[1] = true;
@@ -189,7 +189,7 @@ public class WeatherRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'temperature' field */
-    public ch04.entity.WeatherRecord.Builder clearTemperature() {
+    public avro.entity.WeatherRecord.Builder clearTemperature() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -200,7 +200,7 @@ public class WeatherRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'stationId' field */
-    public ch04.entity.WeatherRecord.Builder setStationId(java.lang.CharSequence value) {
+    public avro.entity.WeatherRecord.Builder setStationId(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.stationId = value;
       fieldSetFlags()[2] = true;
@@ -213,7 +213,7 @@ public class WeatherRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'stationId' field */
-    public ch04.entity.WeatherRecord.Builder clearStationId() {
+    public avro.entity.WeatherRecord.Builder clearStationId() {
       stationId = null;
       fieldSetFlags()[2] = false;
       return this;

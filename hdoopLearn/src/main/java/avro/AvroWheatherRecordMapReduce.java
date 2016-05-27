@@ -1,4 +1,4 @@
-package ch04;
+package avro;
 
 import java.io.IOException;
 
@@ -21,9 +21,9 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import org.mortbay.util.ajax.JSON;
 
+import avro.entity.WeatherRecord;
 import utils.FileUtils;
-
-import ch04.entity.WeatherRecord;
+import utils.NcdcRecordParser;
 
 public class AvroWheatherRecordMapReduce extends Configured implements Tool {
 

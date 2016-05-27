@@ -48,7 +48,6 @@ public class FileUtils {
 				flag = true;
 			}
 		}
-		file.delete();
-		return flag;
+		return file.delete() && flag;
 	}
 }

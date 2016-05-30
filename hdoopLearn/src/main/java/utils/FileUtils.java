@@ -23,14 +23,14 @@ public class FileUtils {
 		boolean flag = false;
 		File file = new File(path);
 		if (!file.exists()) {
-			System.out.println("文件夹不存在，不执行删除");
+			System.out.println("文件夹不存在，不执行删除" + path);
 			return flag;
 		}
 		if (!file.isDirectory()) {
-			System.out.println("不是文件夹，不执行删除");
+			System.out.println("不是文件夹，不执行删除" + path);
 			return flag;
 		}
-		System.out.println("开始删除文件夹");
+		System.out.println("开始删除文件夹" + path);
 		String[] tempList = file.list();
 		File temp = null;
 		for (int i = 0; i < tempList.length; i++) {

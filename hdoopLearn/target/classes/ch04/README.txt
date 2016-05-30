@@ -1,1 +1,0 @@
-在外面执行： mvn package即可生成代码，eclipse的maven插件有问题

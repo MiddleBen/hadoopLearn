@@ -1,1 +1,0 @@
-{"namespace": "ch04.entity","type":"record","name":"WeatherRecord","doc":"A weather reading.","fields":[{"name":"year","type":"int","order":"ascending"},{"name":"temperature","type":"int"},{"name":"stationId","type":"string"}]}

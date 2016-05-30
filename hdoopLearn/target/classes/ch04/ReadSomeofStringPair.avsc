@@ -1,7 +1,0 @@
-{
-"namespace": "ch04.entity",
-"type":"record",
-"name":"StringPair",
-"doc": "a pair of strings",
-"fields":[{"name":"right","type":"string","order":"descending"}]
-}

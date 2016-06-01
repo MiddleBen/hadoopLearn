@@ -2,8 +2,6 @@ package mapred.main;
 
 import java.io.IOException;
 
-import mapred.MyPairComparable;
-import mapred.MyPairComparable.SecondaryComparator;
 import mapred.SecondaryPartitioner;
 
 import org.apache.hadoop.conf.Configuration;
@@ -19,6 +17,8 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
+import org.apache.mahout.common.IntPairWritable;
+import org.apache.mahout.common.IntPairWritable.Comparator;
 
 import utils.FileUtils;
 import utils.NcdcRecordParser;
@@ -30,10 +30,10 @@ import utils.NcdcRecordParser;
  * @author Administrator
  * 
  */
-public class SecondarySort extends Configured implements Tool {
-
+public class InpairSecondarySort extends Configured implements Tool {
+	
 	public static void main(String[] args) throws Exception {
-		int exitCode = ToolRunner.run(new SecondarySort(), args);
+		int exitCode = ToolRunner.run(new InpairSecondarySort(), args);
 		System.exit(exitCode);
 	}
 
@@ -47,13 +47,13 @@ public class SecondarySort extends Configured implements Tool {
 		Configuration conf = getConf();
 		Job job = new Job(conf);
 		job.setJobName("SecondarySort");
-		job.setJarByClass(SecondarySort.class);
+		job.setJarByClass(InpairSecondarySort.class);
 		job.setMapperClass(SecondaryMapper.class);
 		job.setReducerClass(SecodaryRecuder.class);
-		job.setOutputKeyClass(MyPairComparable.class);
+		job.setOutputKeyClass(IntPairWritable.class);
 		job.setOutputValueClass(NullWritable.class);
-		job.setPartitionerClass(SecondaryPartitioner.class);
-		job.setSortComparatorClass(SecondaryComparator.class);
+//		job.setPartitionerClass(SecondaryPartitioner.class);
+//		job.setSortComparatorClass(Comparator.class);
 		job.setNumReduceTasks(2);
 		// job.setGroupingComparatorClass(SecondaryGroupCompator.class);
 		FileUtils.delAllFile(args[1]);
@@ -65,7 +65,7 @@ public class SecondarySort extends Configured implements Tool {
 	}
 
 	static class SecondaryMapper extends
-			Mapper<LongWritable, Text, MyPairComparable, NullWritable> {
+			Mapper<LongWritable, Text, IntPairWritable, NullWritable> {
 
 		private NcdcRecordParser parse = new NcdcRecordParser();
 
@@ -75,7 +75,7 @@ public class SecondarySort extends Configured implements Tool {
 			parse.parse(value);
 			if (parse.isValidTemperature()) {
 				context.write(
-						new MyPairComparable(parse.getYearInt(), parse
+						new IntPairWritable(parse.getYearInt(), parse
 								.getAirTemperature()), NullWritable.get());
 			}
 		}
@@ -83,10 +83,10 @@ public class SecondarySort extends Configured implements Tool {
 
 	static class SecodaryRecuder
 			extends
-			Reducer<MyPairComparable, NullWritable, MyPairComparable, NullWritable> {
+			Reducer<IntPairWritable, NullWritable, IntPairWritable, NullWritable> {
 
 		@Override
-		protected void reduce(MyPairComparable arg0,
+		protected void reduce(IntPairWritable arg0,
 				Iterable<NullWritable> arg1, Context arg2) throws IOException,
 				InterruptedException {
 			arg2.write(arg0, NullWritable.get());

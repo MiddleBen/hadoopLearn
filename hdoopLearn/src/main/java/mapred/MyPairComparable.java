@@ -11,10 +11,12 @@ import org.apache.mahout.common.IntPairWritable;
 public class MyPairComparable implements WritableComparable<MyPairComparable>,
 		Cloneable {
 
-	static final int INT_BYTE_LENGTH = 4;
+	private int first;
+
+	private int second;
 
 	public MyPairComparable() {
-
+//
 	}
 
 	@Override
@@ -25,13 +27,13 @@ public class MyPairComparable implements WritableComparable<MyPairComparable>,
 
 	@Override
 	public int hashCode() {
+		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return first + "\t" + second;
 	}
 
 	public MyPairComparable(int first, int second) {
@@ -39,9 +41,6 @@ public class MyPairComparable implements WritableComparable<MyPairComparable>,
 		this.first = first;
 		this.second = second;
 	}
-
-	private int first;
-	private int second;
 
 	public int getFirst() {
 		return first;
@@ -83,40 +82,9 @@ public class MyPairComparable implements WritableComparable<MyPairComparable>,
 
 	public static final class SecondaryComparator extends WritableComparator {
 
+		// 这个构造函数非常重要，少了compare的buffer就是空的啦。
 		public SecondaryComparator() {
-			super(MyPairComparable.class);
-		}
-
-		@Override
-		public int compare(byte[] b1, int s1, int l1, byte[] b2, int s2, int l2) {
-			return doCompare(b1, s1, b2, s2);
-		}
-
-		static int doCompare(byte[] b1, int s1, byte[] b2, int s2) {
-			int compare1 = compareInts(b1, s1, b2, s2);
-			if (compare1 != 0) {
-				return compare1;
-			}
-			return compareInts(b1, s1 + INT_BYTE_LENGTH, b2, s2
-					+ INT_BYTE_LENGTH);
-		}
-
-		private static int compareInts(byte[] b1, int s1, byte[] b2, int s2) {
-			// Like WritableComparator.compareBytes(), but treats first byte as
-			// signed value
-			int end1 = s1 + INT_BYTE_LENGTH;
-			for (int i = s1, j = s2; i < end1; i++, j++) {
-				int a = b1[i];
-				int b = b2[j];
-				if (i > s1) {
-					a &= 0xff;
-					b &= 0xff;
-				}
-				if (a != b) {
-					return a - b;
-				}
-			}
-			return 0;
+			super(MyPairComparable.class, true);
 		}
 
 		@Override

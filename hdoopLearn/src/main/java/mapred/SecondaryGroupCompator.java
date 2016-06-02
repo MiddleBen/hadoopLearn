@@ -2,14 +2,17 @@ package mapred;
 
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;
-import org.apache.mahout.common.IntPairWritable;
 
 public class SecondaryGroupCompator extends WritableComparator {
 
+	protected SecondaryGroupCompator() {
+		super(MyPairComparable.class, true);
+	}
+
 	@Override
 	public int compare(WritableComparable a, WritableComparable b) {
-		IntPairWritable a1 = (IntPairWritable)a;
-		IntPairWritable a2 = (IntPairWritable)b;
+		MyPairComparable a1 = (MyPairComparable) a;
+		MyPairComparable a2 = (MyPairComparable) b;
 		return a1.getFirst() - a2.getFirst();
 	}
 

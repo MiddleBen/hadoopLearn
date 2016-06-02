@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import mapred.MyPairComparable;
 import mapred.MyPairComparable.SecondaryComparator;
+import mapred.SecondaryGroupCompator;
 import mapred.SecondaryPartitioner;
 
 import org.apache.hadoop.conf.Configuration;
@@ -55,7 +56,7 @@ public class SecondarySort extends Configured implements Tool {
 		job.setPartitionerClass(SecondaryPartitioner.class);
 		job.setSortComparatorClass(SecondaryComparator.class);
 		job.setNumReduceTasks(2);
-		// job.setGroupingComparatorClass(SecondaryGroupCompator.class);
+		job.setGroupingComparatorClass(SecondaryGroupCompator.class);
 		FileUtils.delAllFile(args[1]);
 		String input = args[0];
 		String output = args[1];

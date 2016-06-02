@@ -7,12 +7,15 @@ import java.io.IOException;
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;
 import org.apache.mahout.common.IntPairWritable;
-import org.apache.mahout.common.IntPairWritable.Comparator;
 
 public class MyPairComparable implements WritableComparable<MyPairComparable>,
 		Cloneable {
-	
+
 	static final int INT_BYTE_LENGTH = 4;
+
+	public MyPairComparable() {
+
+	}
 
 	@Override
 	public boolean equals(Object arg0) {

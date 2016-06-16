@@ -1,0 +1,18 @@
+<configuration>
+	<property>
+		<name>hbase.rootdir</name>
+		<value>hdfs://hostname:9000/hbase</value>
+	</property>
+	<property>
+		<name>hbase.cluster.distributed</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>hbase.zookeeper.quorum</name>
+		<value>*.*.*.*, *.*.*.*, *.*.*.*</value>
+	</property>
+	<property skipInDoc="true">
+		<name>hbase.defaults.for.version</name>
+		<value>1.0.0</value>
+	</property>
+</configuration>
